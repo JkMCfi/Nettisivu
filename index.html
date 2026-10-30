@@ -3,20 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minun Muistilistani</title>
+    <title>Tietovisa</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="container">
-        <h1>Oma Muistilista</h1>
-        
-        <div class="input-area">
-            <input type="text" id="taskInput" placeholder="Kirjoita uusi tehtävä...">
-            <button onclick="lisaaTehtava()">Lisää</button>
+    <div class="quiz-container">
+        <h1>Suuri Tietovisa 🧠</h1>
+        <div id="quiz">
+            <h2 id="kysymys">Kysymys tulee tähän...</h2>
+            <div id="vastaus-napit" class="btn-grid">
+                <!-- Napit ilmestyvät tähän -->
+            </div>
         </div>
-
-        <ul id="taskList"></ul>
+        <div id="tulos-alue" class="piilossa">
+            <h2>Peli päättyi! 🎉</h2>
+            <p id="pisteet"></p>
+            <button onclick="aloitaPeli()">Pelaa uudelleen</button>
+        </div>
     </div>
 
     <script src="script.js"></script>
