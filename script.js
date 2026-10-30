@@ -68,4 +68,92 @@ const kysymykset = [
 
     // Eläimet
     {
-        kysymys: "Mikä on
+        kysymys: "Mikä on maailman suurin eläin?",
+        vastaukset: [
+            { teksti: "Norsu", oikein: false },
+            { teksti: "Sinivalas", oikein: true },
+            { teksti: "Kirahvi", oikein: false },
+            { teksti: "Valkohai", oikein: false }
+        ]
+    },
+    {
+        kysymys: "Kuinka monta jalkaa hämähäkillä on?",
+        vastaukset: [
+            { teksti: "6", oikein: false },
+            { teksti: "8", oikein: true },
+            { teksti: "10", oikein: false },
+            { teksti: "12", oikein: false }
+        ]
+    },
+
+    // Tiede
+    {
+        kysymys: "Paljonko on 5 x 5?",
+        vastaukset: [
+            { teksti: "20", oikein: false },
+            { teksti: "15", oikein: false },
+            { teksti: "25", oikein: true },
+            { teksti: "30", oikein: false }
+        ]
+    }
+];
+
+let nykyinenKysymysIndex = 0;
+let pisteet = 0;
+
+function aloitaPeli() {
+    nykyinenKysymysIndex = 0;
+    pisteet = 0;
+    document.getElementById("tulos-alue").classList.add("piilossa");
+    document.getElementById("quiz").classList.remove("piilossa");
+    naytaKysymys();
+}
+
+function naytaKysymys() {
+    tyhjennaNapit();
+    let nykyinenKysymys = kysymykset[nykyinenKysymysIndex];
+    document.getElementById("kysymys").textContent = `${nykyinenKysymysIndex + 1}/${kysymykset.length}: ${nykyinenKysymys.kysymys}`;
+
+    nykyinenKysymys.vastaukset.forEach(vastaus => {
+        const button = document.createElement("button");
+        button.textContent = vastaus.teksti;
+        button.disabled = false;
+        button.onclick = () => valitseVastaus(button, vastaus.oikein);
+        document.getElementById("vastaus-napit").appendChild(button);
+    });
+}
+
+function tyhjennaNapit() {
+    document.getElementById("vastaus-napit").innerHTML = "";
+}
+
+function valitseVastaus(nappi, onkoOikein) {
+    if (onkoOikein) {
+        nappi.classList.add("oikein");
+        pisteet++;
+    } else {
+        nappi.classList.add("vaarin");
+    }
+
+    const napit = document.getElementById("vastaus-napit").children;
+    for (let b of napit) {
+        b.disabled = true;
+    }
+
+    setTimeout(() => {
+        nykyinenKysymysIndex++;
+        if (nykyinenKysymysIndex < kysymykset.length) {
+            naytaKysymys();
+        } else {
+            naytaTulos();
+        }
+    }, 1000);
+}
+
+function naytaTulos() {
+    document.getElementById("quiz").classList.add("piilossa");
+    document.getElementById("tulos-alue").classList.remove("piilossa");
+    document.getElementById("pisteet").textContent = `Sait ${pisteet} / ${kysymykset.length} oikein!`;
+}
+
+aloitaPeli();
