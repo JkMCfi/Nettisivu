@@ -1,75 +1,59 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f2f5;
+    background-color: #1e1e2e;
+    color: white;
     display: flex;
     justify-content: center;
-    padding-top: 50px;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
 }
 
-.container {
-    background: white;
+.quiz-container {
+    background: #2b2b3b;
     padding: 30px;
     border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 350px;
+    width: 90%;
+    max-width: 450px;
     text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
 h1 {
-    color: #333;
+    color: #ffcc00;
     margin-bottom: 20px;
 }
 
-.input-area {
+.btn-grid {
     display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-input {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 16px;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
 }
 
 button {
-    padding: 10px 15px;
-    background-color: #007bff;
+    background-color: #4e4e6a;
     color: white;
     border: none;
-    border-radius: 6px;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 16px;
     cursor: pointer;
-    font-weight: bold;
+    transition: 0.2s;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #6c6c93;
 }
 
-ul {
-    list-style: none;
-    padding: 0;
+.oikein {
+    background-color: #28a745 !important;
 }
 
-li {
-    background: #f9f9f9;
-    padding: 10px;
-    border-bottom: 1px solid #eee;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 4px;
-    margin-bottom: 8px;
+.vaarin {
+    background-color: #dc3545 !important;
 }
 
-.poista-btn {
-    background-color: #dc3545;
-    padding: 5px 8px;
-    font-size: 12px;
-}
-
-.poista-btn:hover {
-    background-color: #a71d2a;
+.piilossa {
+    display: none;
 }
